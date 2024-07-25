@@ -6,7 +6,7 @@ name: Build Docs
 on:
   push:
     branches:
-      - main
+      - master
       - develop
   workflow_dispatch:
 
@@ -23,6 +23,7 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
       - run: npm i -g @koumoul/gh-pages-multi
+      - run: git config --global user.name "GH"
       - run: gh-pages-multi deploy --title "TEST" --better-target
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
