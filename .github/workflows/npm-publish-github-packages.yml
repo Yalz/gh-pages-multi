@@ -26,7 +26,9 @@ jobs:
       - run: |
           git config --global user.email "vsds@noreply.com"
           git config --global user.name "VSDS"
-          git config --global url.https://${{ secrets.GITHUB_TOKEN }}@github.com/.insteadOf https://github.com/
+          git config --global url.https://${{ env.PAT }}@github.com/.insteadOf https://github.com/
+        env:
+          PAT: ${{secrets.PAT}}
       - run: gh-pages-multi deploy --title "TEST"
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
