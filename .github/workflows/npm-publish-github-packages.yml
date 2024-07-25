@@ -23,7 +23,9 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
       - run: npm i -g @koumoul/gh-pages-multi
-      - run: git config --global user.name "GH"
-      - run: gh-pages-multi deploy --title "TEST" --better-target
+      - run: |
+          git config --global user.email "vsds@noreply.com"
+          git config --global user.name "VSDS"
+      - run: gh-pages-multi deploy --title "TEST"
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
