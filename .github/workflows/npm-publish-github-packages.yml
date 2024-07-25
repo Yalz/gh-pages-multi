@@ -11,6 +11,18 @@ on:
   workflow_dispatch:
 
 jobs:
+  define-version:
+    runs-on: ubuntu-latest
+    steps:
+       - name: Set up JDK 21
+         uses: actions/setup-java@v4
+         with:
+          distribution: zulu
+          java-version: 21
+       - name: Determine version
+         run: |
+          export VERSION=$(mvn help:evaluate -Dexpression="project.version" -q -DforceStdout)
+          echo "version=$VERSION" >> $GITHUB_ENV
   build:
     runs-on: ubuntu-latest
     permissions:
@@ -30,7 +42,6 @@ jobs:
         env:
           PAT: ${{secrets.PAT}}
       - run: |
-          gh-pages-multi deploy --title "TEST" -t "v2.2.3"
-          gh-pages-multi deploy --title "TEST" -t "latest"
+          gh-pages-multi deploy --title "TEST" -t ${{env.version}}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
