@@ -25,6 +25,7 @@ jobs:
           distribution: zulu
           java-version: 21
       - name: Determine version
+        id: version
         run: |
           export VERSION=$(mvn help:evaluate -Dexpression="project.version" -q -DforceStdout)
           echo "version=$VERSION" >> $>> $GITHUB_OUTPUT
@@ -41,6 +42,6 @@ jobs:
         env:
           PAT: ${{secrets.PAT}}
       - run: |
-          gh-pages-multi deploy --title "TEST" -t ${{env.version}}
+          gh-pages-multi deploy --title "TEST" -t ${{steps.version.outputs.version}}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
