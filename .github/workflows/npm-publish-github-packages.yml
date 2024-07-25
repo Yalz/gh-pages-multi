@@ -23,6 +23,6 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
       - run: npm i -g @koumoul/gh-pages-multi
-      - run: gh-pages-multi deploy --title "TEST" --beter-target
+      - run: gh-pages-multi deploy --title "TEST" --better-target
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
