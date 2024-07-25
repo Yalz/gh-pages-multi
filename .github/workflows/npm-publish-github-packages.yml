@@ -24,6 +24,7 @@ jobs:
           export VERSION=$(mvn help:evaluate -Dexpression="project.version" -q -DforceStdout)
           echo "version=$VERSION" >> $GITHUB_ENV
   build:
+    needs: define-version
     runs-on: ubuntu-latest
     permissions:
       contents: read
