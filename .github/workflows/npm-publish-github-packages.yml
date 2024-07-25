@@ -24,6 +24,7 @@ jobs:
          run: |
           export VERSION=$(mvn help:evaluate -Dexpression="project.version" -q -DforceStdout)
           echo "version=$VERSION" >> $GITHUB_ENV
+          echo $VERSION
           echo ${{env.version}}
   build:
     needs: define-version
