@@ -29,6 +29,8 @@ jobs:
           git config --global url.https://${{ env.PAT }}@github.com/.insteadOf https://github.com/
         env:
           PAT: ${{secrets.PAT}}
-      - run: gh-pages-multi deploy --title "TEST" -t "v0.2.3"
+      - run: |
+          gh-pages-multi deploy --title "TEST" -t "v10.2.3"
+          gh-pages-multi deploy --title "TEST" -t "latest"
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
