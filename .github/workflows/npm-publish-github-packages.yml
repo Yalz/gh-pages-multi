@@ -29,7 +29,11 @@ jobs:
         run: |
           export VERSION=$(mvn help:evaluate -Dexpression="project.version" -q -DforceStdout)
           echo "version=$VERSION" >> $>> $GITHUB_OUTPUT
-      - uses: actions/checkout@v4
+      - name: Build
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: "./docs"
+          destination: "./docs/_site"
       - uses: actions/setup-node@v3
         with:
           node-version: 16
@@ -42,6 +46,6 @@ jobs:
         env:
           PAT: ${{secrets.PAT}}
       - run: |
-          gh-pages-multi deploy --title "TEST" -t ${{steps.version.outputs.version}}
+          gh-pages-multi deploy --title "TEST" -t ${{steps.version.outputs.version}} -s docs/_site
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
