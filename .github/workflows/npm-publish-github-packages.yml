@@ -39,7 +39,6 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
       - name: Build with Jekyll
-        # Outputs to the './_site' directory by default
         run: |
           cd docs 
           bundle install
@@ -53,7 +52,7 @@ jobs:
       - run: npm i -g @koumoul/gh-pages-multi
       - run: |
           git config --global user.email "vsds@noreply.com"
-          git config --global user.name "VSDS"
+          git config --global user.name "VSDS CI"
           git config --global url.https://${{ env.PAT }}@github.com/.insteadOf https://github.com/
         env:
           PAT: ${{secrets.PAT}}
