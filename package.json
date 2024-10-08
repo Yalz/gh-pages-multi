@@ -1,6 +1,6 @@
 {
-  "name": "@koumoul/gh-pages-multi",
-  "version": "0.7.2",
+  "name": "@yalz/gh-pages-multi",
+  "version": "0.7.3",
   "description": "Simply push files to gh-pages on github and manage subdirectories. Easy way to publish documentation for multiple versions of a project for example.",
   "main": "lib",
   "bin": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/koumoul-dev/gh-pages-multi.git"
+    "url": "git+https://github.com/Yalz/gh-pages-multi.git"
   },
   "keywords": [
     "gh-pages",
@@ -20,12 +20,12 @@
     "multiple",
     "versions"
   ],
-  "author": "Alban Mouton <alban.mouton@koumoul.com>",
+  "author": "Yalz <https://github.com/Yalz>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/koumoul-dev/gh-pages-multi/issues"
+    "url": "https://github.com/Yalz/gh-pages-multi/issues"
   },
-  "homepage": "https://github.com/koumoul-dev/gh-pages-multi#readme",
+  "homepage": "https://github.com/Yalz/gh-pages-multi#readme",
   "devDependencies": {
     "eslint": "^8.55.0",
     "eslint-config-standard": "^17.1.0"
@@ -40,5 +40,8 @@
     "rimraf": "^5.0.5",
     "semver": "^7.5.4",
     "tmp-promise": "^3.0.3"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }
