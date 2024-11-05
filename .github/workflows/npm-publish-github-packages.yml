@@ -24,7 +24,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: https://npm.pkg.github.com/
+      - run: npm i -g @yalz/gh-pages-multi
       - run: |
           git config --global user.email "vsds@noreply.com"
           git config --global user.name "VSDS CI"
@@ -32,6 +32,6 @@ jobs:
         env:
           PAT: ${{secrets.PAT}}
       - run: |
-          ./bin/gh-pages-multi deploy --title "TEST" -t ${{ github.event.inputs.version }} -s docs
+          gh-pages-multi deploy --title "TEST" -t ${{ github.event.inputs.version }} -s docs
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
