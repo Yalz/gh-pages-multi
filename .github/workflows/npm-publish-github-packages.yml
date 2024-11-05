@@ -33,6 +33,6 @@ jobs:
         env:
           PAT: ${{secrets.PAT}}
       - run: |
-          gh-pages-multi deploy --title "TEST" -t ${{ github.event.inputs.version }} -s docs/_site
+          gh-pages-multi deploy --title "TEST" -t ${{ github.event.inputs.version }} -s docs
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
