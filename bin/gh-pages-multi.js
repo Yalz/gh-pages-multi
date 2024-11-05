@@ -34,6 +34,13 @@ program.command('better-target <target>')
     console.log(require('../lib').betterTarget(target))
   })
 
+program.command('debug')
+    .option('--title [title]', 'The title of the generated index.html.', remote ? remote.split('/').pop().replace('.git', '') : 'gh-pages-multi')
+    .option('--template [template]', 'The pug template to use to generate the index.hml file.', path.join(__dirname, '../lib/index.pug'))
+    .action(function (options) {
+        console.log(require('../lib').debug(options))
+    })
+
 if (!process.argv.slice(2).length) program.help()
 
 program.parse(process.argv)
